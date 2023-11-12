@@ -1,16 +1,32 @@
-import {useState} from 'react';
-import './App.css';
+import React, {useState} from 'react';
+import Modal from './Modal/Modal';
+import Alert from './Alert/Alert';
 
-function App() {
-    const [count, setCount] = useState(0);
+const App: React.FC = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [showAlert, setShowAlert] = useState(true);
+
+    const closeAlert = () => {
+        setShowAlert(false);
+    };
 
     return (
-        <>
-            <button onClick={() => setCount((count) => count + 1)}>
-                count is {count}
+        <div className="container mt-5">
+            {showAlert && (
+                <Alert type="warning" onDismiss={closeAlert}>
+                    This is a warning type alert
+                </Alert>
+            )}
+
+            <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+                Open Modal
             </button>
-        </>
+
+            <Modal show={showModal} title="Some kinda modal title" onClose={() => setShowModal(false)}>
+                <p>This is modal content</p>
+            </Modal>
+        </div>
     );
-}
+};
 
 export default App;
