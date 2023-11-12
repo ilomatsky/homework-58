@@ -13,7 +13,7 @@ const Alert: React.FC<AlertProps> = ({type, onDismiss, children}) => {
         <div className={alertClasses} role="alert">
             {children}
             {onDismiss && (
-                <button type="button" className="btn-close" onClick={onDismiss} aria-label="Close"></button>
+                <button type="button" className="btn-close" onClick={onDismiss} aria-label="Close">x</button>
             )}
         </div>
     );
