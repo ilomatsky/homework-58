@@ -6,17 +6,18 @@ interface AlertProps {
     children: React.ReactNode;
 }
 
-const Alert: React.FC<AlertProps> = ({type, onDismiss, children}) => {
-    const alertClasses = `alert alert-${type}`;
+const Alert: React.FC<AlertProps> = ({ type, onDismiss, children }) => {
+    const alertClasses = `alert alert-${type} alert-dismissible`;
 
     return (
         <div className={alertClasses} role="alert">
             {children}
             {onDismiss && (
-                <button type="button" className="btn-close" onClick={onDismiss} aria-label="Close">x</button>
+                <button type="button" className="btn-close" onClick={onDismiss} aria-label="Close"></button>
             )}
         </div>
     );
 };
 
 export default Alert;
+
